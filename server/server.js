@@ -12,7 +12,10 @@ app.use(bodyParser.json());
 
 app.post("/todos", (req, res) => {
 
-    var todo = new Todo(req.body);
+    var todo = new Todo({
+
+        text: req.body.text
+    });
 
     todo.save()
     .then((doc) => {
@@ -33,3 +36,4 @@ app.listen(3000, () => {
 });
 
 
+module.exports = {app};
